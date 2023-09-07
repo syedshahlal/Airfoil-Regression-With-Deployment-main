@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>ML API</title>
+    <style>
+        body {
+            font-family: 'Arimo', sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+        }
+
+        h1 {
+            font-family: 'Pacifico', cursive;
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Airfoil Prediction</h1>
+
+        <!-- Main Input For Receiving Query to our ML -->
+        <form action="{{ url_for('predict')}}" method="post">
+            <label for="Frequency">Frequency (Hz):</label>
+            <input type="text" name="Frequency" class="input-field" placeholder="Enter Frequency" required="required" />
+
+            <label for="Angle">Angle of Attack (degrees):</label>
+            <input type="text" name="Angle" class="input-field" placeholder="Enter Angle of Attack" required="required" />
+
+            <label for="ChordLength">Chord Length (m):</label>
+            <input type="text" name="ChordLength" class="input-field" placeholder="Enter Chord Length" required="required" />
+
+            <label for="FreeStreamVelocity">Free-stream Velocity (m/s):</label>
+            <input type="text" name="FreeStreamVelocity" class="input-field" placeholder="Enter Free-stream Velocity" required="required" />
+
+            <label for="SuctionSide">Suction Side (m):</label>
+            <input type="text" name="SuctionSide" class="input-field" placeholder="Enter Suction Side" required="required" />
+
+            <button type="submit" class="btn">Predict</button>
+        </form>
+    </div>
+
+    {{prediction_text}}
+
+</body>
+
+</html>
